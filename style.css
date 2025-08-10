@@ -1,0 +1,91 @@
+/* ===== Custom Styling for Currency Exchange App ===== */
+
+/* Smooth animations */
+* {
+  transition: all 0.25s ease;
+}
+
+/* Header branding */
+header {
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  color: white;
+}
+header h1 {
+  color: white;
+}
+header nav a {
+  color: #e0e7ff;
+}
+header nav a:hover {
+  color: white;
+}
+
+/* Mobile menu dropdown */
+#mobile-menu a:hover {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+}
+
+/* Sections background effect */
+section {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+section h2 {
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Converter form inputs */
+select, input {
+  border: 2px solid #e5e7eb;
+  padding: 0.6rem;
+  border-radius: 8px;
+  font-weight: 500;
+}
+select:focus, input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+/* Result text animation */
+#result {
+  animation: fadeIn 0.3s ease-in-out;
+  color: #2563eb;
+}
+
+/* Exchange rates table */
+table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+thead tr {
+  background: #2563eb;
+  color: white;
+}
+tbody tr:hover {
+  background-color: #f3f4f6;
+}
+td, th {
+  padding: 0.75rem;
+}
+
+/* About section */
+#about p {
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+/* Footer */
+footer {
+  background: #f9fafb;
+  font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,271 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Currency Exchange Rates
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+ </head>
+ <body class="bg-gray-50 min-h-screen flex flex-col">
+  <header class="bg-white shadow">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+     <img alt="Currency exchange icon showing dollar sign on green background" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/82e1ef0a-10cf-443f-5d5d-3d07663b5b3b.jpg" width="40"/>
+     <h1 class="text-2xl font-semibold text-gray-800">
+      Currency Exchange Rates
+     </h1>
+    </div>
+    <nav class="hidden md:flex space-x-6 text-gray-600 font-medium">
+     <a class="hover:text-blue-600 transition" href="#converter">
+      Converter
+     </a>
+     <a class="hover:text-blue-600 transition" href="#rates">
+      Exchange Rates
+     </a>
+     <a class="hover:text-blue-600 transition" href="#about">
+      About
+     </a>
+    </nav>
+    <button aria-label="Open menu" class="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none" id="mobile-menu-button">
+     <i class="fas fa-bars fa-lg">
+     </i>
+    </button>
+   </div>
+   <nav aria-label="Mobile menu" class="hidden md:hidden bg-white border-t border-gray-200" id="mobile-menu">
+    <a class="block px-4 py-3 text-gray-700 hover:bg-gray-100" href="#converter">
+     Converter
+    </a>
+    <a class="block px-4 py-3 text-gray-700 hover:bg-gray-100" href="#rates">
+     Exchange Rates
+    </a>
+    <a class="block px-4 py-3 text-gray-700 hover:bg-gray-100" href="#about">
+     About
+    </a>
+   </nav>
+  </header>
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+   <section class="bg-white rounded-lg shadow p-6 max-w-3xl mx-auto" id="converter">
+    <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">
+     Currency Converter
+    </h2>
+    <form class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-end" id="converter-form">
+     <div>
+      <label class="block text-gray-700 font-medium mb-2" for="from-currency">
+       From
+      </label>
+      <select aria-label="Select currency to convert from" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" id="from-currency">
+      </select>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-medium mb-2" for="to-currency">
+       To
+      </label>
+      <select aria-label="Select currency to convert to" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" id="to-currency">
+      </select>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-medium mb-2" for="amount">
+       Amount
+      </label>
+      <input aria-label="Enter amount to convert" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" id="amount" min="0" placeholder="Enter amount" step="any" type="number"/>
+     </div>
+    </form>
+    <div aria-live="polite" class="mt-8 text-center text-2xl font-semibold text-gray-900 min-h-[2.5rem]" id="result">
+    </div>
+   </section>
+   <section aria-label="Current exchange rates" class="mt-16 max-w-5xl mx-auto bg-white rounded-lg shadow p-6" id="rates">
+    <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">
+     Current Exchange Rates
+    </h2>
+    <div class="overflow-x-auto">
+     <table class="w-full table-auto border-collapse border border-gray-300">
+      <thead>
+       <tr class="bg-blue-50">
+        <th class="border border-gray-300 px-4 py-2 text-left">
+         Currency Pair
+        </th>
+        <th class="border border-gray-300 px-4 py-2 text-right">
+         Exchange Rate
+        </th>
+       </tr>
+      </thead>
+      <tbody class="text-gray-700" id="rates-table-body">
+      </tbody>
+     </table>
+    </div>
+   </section>
+   <section class="mt-16 max-w-4xl mx-auto bg-white rounded-lg shadow p-6 text-gray-700" id="about">
+    <h2 class="text-3xl font-semibold text-gray-800 mb-4 text-center">
+     About This Website
+    </h2>
+    <p class="mb-4 text-center max-w-xl mx-auto">
+     This website allows you to view and convert currency exchange rates from various countries.
+        Enter an amount and select currencies to see the converted value instantly. The exchange rates
+        are updated regularly to provide accurate information.
+    </p>
+    <p class="text-center max-w-xl mx-auto">
+     All currency data is sourced from a reliable API and displayed in a user-friendly interface.
+        This tool is perfect for travelers, businesses, and anyone interested in currency conversions.
+    </p>
+   </section>
+  </main>
+  <footer class="bg-white border-t border-gray-200 py-6 mt-16">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
+    © 2024 Currency Exchange Rates. All rights reserved.
+   </div>
+  </footer>
+  <script>
+   // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Currency data and exchange rates
+    // For demonstration, we use fixed exchange rates relative to USD
+    // Rates are: 1 USD = X units of currency
+    const currencies = [
+      { code: 'USD', name: 'US Dollar', symbol: '$', flag: '🇺🇸' },
+      { code: 'IDR', name: 'Indonesian Rupiah', symbol: 'Rp', flag: '🇮🇩' },
+      { code: 'EUR', name: 'Euro', symbol: '€', flag: '🇪🇺' },
+      { code: 'JPY', name: 'Japanese Yen', symbol: '¥', flag: '🇯🇵' },
+      { code: 'GBP', name: 'British Pound', symbol: '£', flag: '🇬🇧' },
+      { code: 'AUD', name: 'Australian Dollar', symbol: 'A$', flag: '🇦🇺' },
+      { code: 'CAD', name: 'Canadian Dollar', symbol: 'C$', flag: '🇨🇦' },
+      { code: 'CHF', name: 'Swiss Franc', symbol: 'CHF', flag: '🇨🇭' },
+      { code: 'CNY', name: 'Chinese Yuan', symbol: '¥', flag: '🇨🇳' },
+      { code: 'INR', name: 'Indian Rupee', symbol: '₹', flag: '🇮🇳' },
+      { code: 'KRW', name: 'South Korean Won', symbol: '₩', flag: '🇰🇷' },
+      { code: 'BRL', name: 'Brazilian Real', symbol: 'R$', flag: '🇧🇷' },
+      { code: 'ZAR', name: 'South African Rand', symbol: 'R', flag: '🇿🇦' },
+      { code: 'MXN', name: 'Mexican Peso', symbol: '$', flag: '🇲🇽' },
+      { code: 'SGD', name: 'Singapore Dollar', symbol: 'S$', flag: '🇸🇬' }
+    ];
+
+    // Exchange rates relative to USD (1 USD = X units)
+    // These are example rates and may not be current
+    const exchangeRatesToUSD = {
+      USD: 1,
+      IDR: 16000,
+      EUR: 0.92,
+      JPY: 134.5,
+      GBP: 0.81,
+      AUD: 1.48,
+      CAD: 1.34,
+      CHF: 0.91,
+      CNY: 7.25,
+      INR: 82.5,
+      KRW: 1310,
+      BRL: 5.1,
+      ZAR: 18.3,
+      MXN: 17.3,
+      SGD: 1.35
+    };
+
+    // Populate currency dropdowns
+    const fromSelect = document.getElementById('from-currency');
+    const toSelect = document.getElementById('to-currency');
+
+    currencies.forEach(({ code, name, symbol, flag }) => {
+      const optionFrom = document.createElement('option');
+      optionFrom.value = code;
+      optionFrom.textContent = `${flag} ${code} - ${name}`;
+      fromSelect.appendChild(optionFrom);
+
+      const optionTo = document.createElement('option');
+      optionTo.value = code;
+      optionTo.textContent = `${flag} ${code} - ${name}`;
+      toSelect.appendChild(optionTo);
+    });
+
+    // Set default selections
+    fromSelect.value = 'IDR';
+    toSelect.value = 'USD';
+
+    const amountInput = document.getElementById('amount');
+    const resultDiv = document.getElementById('result');
+
+    function formatNumber(num) {
+      return num.toLocaleString(undefined, { maximumFractionDigits: 4 });
+    }
+
+    function convertCurrency() {
+      const from = fromSelect.value;
+      const to = toSelect.value;
+      const amount = parseFloat(amountInput.value);
+
+      if (isNaN(amount) || amount <= 0) {
+        resultDiv.textContent = '';
+        return;
+      }
+
+      // Convert amount from "from" currency to USD, then USD to "to" currency
+      // amount_in_usd = amount / exchangeRatesToUSD[from]
+      // converted_amount = amount_in_usd * exchangeRatesToUSD[to]
+      const amountInUSD = amount / exchangeRatesToUSD[from];
+      const convertedAmount = amountInUSD * exchangeRatesToUSD[to];
+
+      // Find symbols for display
+      const fromCurrency = currencies.find(c => c.code === from);
+      const toCurrency = currencies.find(c => c.code === to);
+
+      // Format output with symbols and commas
+      const formattedFromAmount = formatNumber(amount);
+      const formattedConvertedAmount = formatNumber(convertedAmount);
+
+      resultDiv.textContent = `${fromCurrency.symbol}${formattedFromAmount} = ${toCurrency.symbol}${formattedConvertedAmount}`;
+    }
+
+    fromSelect.addEventListener('change', convertCurrency);
+    toSelect.addEventListener('change', convertCurrency);
+    amountInput.addEventListener('input', convertCurrency);
+
+    // Populate exchange rates table with pairs relative to USD
+    const ratesTableBody = document.getElementById('rates-table-body');
+
+    // Show exchange rates for USD to others and others to USD
+    currencies.forEach(({ code, name, symbol, flag }) => {
+      if (code === 'USD') return; // skip USD to USD
+
+      // USD to currency
+      const trUsdTo = document.createElement('tr');
+      trUsdTo.classList.add('hover:bg-gray-50');
+      const tdPairUsdTo = document.createElement('td');
+      tdPairUsdTo.className = 'border border-gray-300 px-4 py-2';
+      tdPairUsdTo.textContent = `USD → ${code}`;
+      const tdRateUsdTo = document.createElement('td');
+      tdRateUsdTo.className = 'border border-gray-300 px-4 py-2 text-right font-mono';
+      tdRateUsdTo.textContent = formatNumber(exchangeRatesToUSD[code]);
+      trUsdTo.appendChild(tdPairUsdTo);
+      trUsdTo.appendChild(tdRateUsdTo);
+      ratesTableBody.appendChild(trUsdTo);
+
+      // Currency to USD
+      const trToUsd = document.createElement('tr');
+      trToUsd.classList.add('hover:bg-gray-50');
+      const tdPairToUsd = document.createElement('td');
+      tdPairToUsd.className = 'border border-gray-300 px-4 py-2';
+      tdPairToUsd.textContent = `${code} → USD`;
+      const tdRateToUsd = document.createElement('td');
+      tdRateToUsd.className = 'border border-gray-300 px-4 py-2 text-right font-mono';
+      tdRateToUsd.textContent = formatNumber(1 / exchangeRatesToUSD[code]);
+      trToUsd.appendChild(tdPairToUsd);
+      trToUsd.appendChild(tdRateToUsd);
+      ratesTableBody.appendChild(trToUsd);
+    });
+
+    // Initial conversion if amount is preset
+    convertCurrency();
+  </script>
+ </body>
+</html>
